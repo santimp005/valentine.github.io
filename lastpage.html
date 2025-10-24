@@ -58,5 +58,24 @@
       </div>
       <div class="flower__glass"></div>
     </div>
+
+    <script>
+      // Enviar confirmación final a Formspree al cargar la página
+      window.addEventListener("load", async () => {
+        const formData = new FormData();
+        formData.append("estado", "El usuario completó todas las respuestas 🌸");
+
+        try {
+          await fetch("https://formspree.io/f/xkgqdbpn", {
+            method: "POST",
+            body: formData,
+            headers: { "Accept": "application/json" },
+          });
+          console.log("✅ Confirmación enviada a Formspree.");
+        } catch (err) {
+          console.log("⚠️ No se pudo enviar la confirmación final.");
+        }
+      });
+    </script>
   </body>
 </html>
